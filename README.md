@@ -20,25 +20,12 @@ Esta es una API de backend para el sistema Zegel, construida con Node.js, Expres
 El proyecto está organizado en capas lógicas para asegurar un código limpio, escalable y fácil de mantener, siguiendo los principios de la **Arquitectura Limpia**.
 .
 └── src/
-├── config/           # Archivos de configuración de la base de datos
-│   └── database.ts
-│
-├── controllers/      # Lógica de negocio para manejar peticiones HTTP
-│   └── auth.controller.ts
-│   └── productos.controller.ts
-│
-├── entities/         # Modelos de TypeORM que representan las tablas
-│   └── Usuario.ts
-│   └── Producto.ts
-│
-├── middlewares/      # Funciones middleware reutilizables (autenticación)
-│   └── auth.middleware.ts
-│
-├── routes/           # Definición de las rutas de la API
-│   └── index.ts
-│
-└── server.ts         # Punto de entrada de la aplicación
----
+    ├── config/           # Archivos de configuración (conexión a la base de datos, etc.)
+    ├── controllers/      # Maneja las peticiones HTTP y el flujo de la lógica de negocio.
+    ├── entities/         # Modelos de TypeORM que representan las tablas de la base de datos.
+    ├── middlewares/      # Funciones middleware reutilizables para el manejo de peticiones.
+    ├── routes/           # Define los puntos de acceso de la API y los enlaza con los controladores.
+    └── server.ts         # El punto de entrada principal de la aplicación
 
 ## ⚙️ Primeros Pasos
 
