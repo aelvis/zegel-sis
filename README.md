@@ -18,7 +18,7 @@ Esta es una API de backend para el sistema Zegel, construida con Node.js, Expres
 ## 📁 Estructura del Proyecto
 
 El proyecto está organizado en capas lógicas para asegurar un código limpio, escalable y fácil de mantener, siguiendo los principios de la **Arquitectura Limpia**.
-
+.
 └── src/
 ├── config/           # Archivos de configuración de la base de datos
 │   └── database.ts
