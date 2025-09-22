@@ -1,9 +1,13 @@
-# Sistema Zegel API Backend
+# Sistema Zegel (Full Stack)
 
-Esta es una API de backend para el sistema Zegel, construida con Node.js, Express, TypeScript y TypeORM. La API maneja la autenticación de usuarios (login/registro con JWT) y provee un CRUD completo (Crear, Leer, Actualizar, Eliminar) para productos.
+Esta es una aplicación full-stack para el sistema Zegel. El proyecto incluye:
+
+-   **Backend API**: Construida con Node.js, Express, TypeScript y TypeORM. Maneja la autenticación de usuarios (JWT) y un CRUD completo para productos.
+-   **Frontend**: Una aplicación cliente para interactuar con la API.
 
 ## 🛠️ Tecnologías Utilizadas
 
+### Backend
 -   **Node.js**: Entorno de ejecución de JavaScript.
 -   **TypeScript**: Un superconjunto de JavaScript que añade tipado estático.
 -   **Express**: Un framework web minimalista para Node.js.
@@ -13,23 +17,25 @@ Esta es una API de backend para el sistema Zegel, construida con Node.js, Expres
 -   **JSON Web Tokens (JWT)**: Para la autenticación de usuarios y la seguridad de las rutas.
 -   **TSX**: Una herramienta para ejecutar archivos de TypeScript directamente.
 
+### Frontend
+-   **[Framework de Frontend]**: (React)
+-   **[Librerías adicionales]**: (material,recharts)
+
 ---
-
- Claro, el formato que necesitas para que se vea así en GitHub es el siguiente. Simplemente copia y pega el siguiente bloque de código en tu archivo `README.md`.
-
------
 
 ### 📁 Estructura del Proyecto
 
-El proyecto está organizado en capas lógicas para asegurar un código limpio, escalable y fácil de mantener, siguiendo los principios de la **Arquitectura Limpia**.
+El proyecto está organizado en dos carpetas principales, `backend/` y `frontend/`.
 
--   `src/`
-    -   `config/`: Archivos de configuración (conexión a la base de datos, etc.).
-    -   `controllers/`: Maneja las peticiones HTTP y el flujo de la lógica de negocio.
-    -   `entities/`: Modelos de TypeORM que representan las tablas de la base de datos.
-    -   `middlewares/`: Funciones middleware reutilizables para el manejo de peticiones.
-    -   `routes/`: Define los puntos de acceso de la API y los enlaza con los controladores.
-    -   `server.ts`: El punto de entrada principal de la aplicación.
+-   `backend/`: Contiene todo el código de la API del servidor.
+    -   `src/`
+        -   `config/`: Archivos de configuración (conexión a la base de datos, etc.).
+        -   `controllers/`: Maneja las peticiones HTTP y el flujo de la lógica de negocio.
+        -   `entities/`: Modelos de TypeORM que representan las tablas de la base de datos.
+        -   `middlewares/`: Funciones middleware reutilizables para el manejo de peticiones.
+        -   `routes/`: Define los puntos de acceso de la API y los enlaza con los controladores.
+        -   `server.ts`: El punto de entrada principal de la aplicación.
+-   `frontend/`: Contiene todo el código de la aplicación cliente.
 
 
 ## ⚙️ Primeros Pasos
@@ -41,21 +47,29 @@ Sigue estos pasos para configurar el proyecto en tu entorno local.
 -   **Node.js**: Asegúrate de tener Node.js instalado.
 -   **PostgreSQL**: Debes tener una instancia de PostgreSQL en funcionamiento.
 
-### Instalación
+### Instalación Global
 
 1.  Clona el repositorio.
     ```bash
-    git clone [https://github.com/tu-usuario/tu-repo.git](https://github.com/tu-usuario/tu-repo.git)
+    git clone https://github.com/tu-usuario/tu-repo.git
     cd tu-repo
     ```
-2.  Instala las dependencias del proyecto.
+
+### Configuración del Backend
+
+1.  Navega al directorio del backend.
+    ```bash
+    cd backend
+    ```
+2.  Instala las dependencias.
     ```bash
     npm install
     ```
+3.  **Configura la Base de Datos:**
+    a. Conéctate a tu instancia de PostgreSQL y ejecuta el siguiente script para crear las tablas e insertar datos de ejemplo.
 
-### Configuración de la Base de Datos
-
-1.  **Crea la base de datos y las tablas:** Conéctate a tu base de datos PostgreSQL y ejecuta el siguiente script para crear las tablas `usuarios` y `productos`, e insertar datos de ejemplo.
+    ```sql
+    -- ... (el script SQL se mantiene igual) ...
 
     ```sql
     CREATE TABLE usuarios (
@@ -91,49 +105,69 @@ Sigue estos pasos para configurar el proyecto en tu entorno local.
     ('Router WiFi 6', 'Router de alta velocidad para redes domésticas.', 60),
     ('Power Bank', 'Batería portátil de 20000 mAh para cargar dispositivos.', 250);
     ```
-
-2.  **Credenciales**: Abre `src/config/database.ts` y actualiza las credenciales de la base de datos según tu configuración local.
+    b. **Credenciales**: Abre `backend/src/config/database.ts` y actualiza las credenciales de la base de datos.
 
     ```typescript
-    // src/config/database.ts
+    // backend/src/config/database.ts
     // ...
     username: "postgres",
     password: "tu_contraseña_de_postgres", // Actualiza con tu contraseña
     database: "tu_base_de_datos",       // Actualiza con el nombre de tu base de datos
     // ...
     ```
+4.  **Ejecutar el Backend**: Inicia el servidor de desarrollo.
+    ```bash
+    npm run dev
+    ```
+    El servidor estará disponible en `http://localhost:3000`.
 
-### Ejecutar el Proyecto
+### Configuración del Frontend
 
-Para iniciar el servidor de desarrollo, ejecuta el siguiente comando. El servidor se reiniciará automáticamente al guardar cambios en los archivos.
+1.  Abre una nueva terminal y navega al directorio del frontend.
+    ```bash
+    cd frontend
+    ```
+2.  Instala las dependencias.
+    ```bash
+    npm install
+    ```
+3.  **Configuración de Entorno (Opcional)**: Si tu frontend necesita un archivo de configuración (ej. `.env`) para apuntar a la URL de la API, créalo ahora.
+    
+    Ejemplo de archivo `.env`:
+    ```
+    REACT_APP_API_URL=http://localhost:3000/api
+    ```
+    *(Ajusta la variable y el valor según la configuración de tu proyecto de frontend).*
 
-```bash
-npm run dev
-El servidor estará disponible en http://localhost:3000.
-🚀 Puntos de Acceso (Endpoints) de la API
-La API está dividida en rutas públicas y rutas protegidas.
+4.  **Ejecutar el Frontend**: Inicia el servidor de desarrollo del cliente.
+    ```bash
+    npm start 
+    ```
+    *(Este comando puede ser `npm run dev` u otro, dependiendo de tu proyecto).*
+    
+    La aplicación frontend estará disponible generalmente en `http://localhost:5173` o `http://localhost:8080`. Revisa la salida de la consola para la URL exacta.
 
-Autenticación (Rutas Públicas)
-POST /api/register: Crea un nuevo usuario.
+## 🚀 Puntos de Acceso (Endpoints) de la API
 
-POST /api/login: Autentica a un usuario y devuelve un JWT. Este token es necesario para acceder a todas las demás rutas protegidas.
+La API del backend está dividida en rutas públicas y rutas protegidas.
 
-Productos (Rutas Protegidas)
-Estas rutas requieren un JWT válido en el encabezado Authorization.
+### Autenticación (Rutas Públicas)
+-   `POST /api/register`: Crea un nuevo usuario.
+-   `POST /api/login`: Autentica a un usuario y devuelve un JWT. Este token es necesario para acceder a las rutas protegidas.
 
-Ejemplo de Encabezado:
-Authorization: Bearer <tu_token_aqui>
+### Productos (Rutas Protegidas)
+Estas rutas requieren un JWT válido en el encabezado `Authorization`.
 
-GET /api/productos: Recupera todos los productos.
+**Ejemplo de Encabezado:**
+`Authorization: Bearer <tu_token_aqui>`
 
-POST /api/productos: Crea un nuevo producto.
+-   `GET /api/productos`: Recupera todos los productos.
+-   `POST /api/productos`: Crea un nuevo producto.
+-   `PUT /api/productos/:id`: Actualiza un producto por su ID.
+-   `DELETE /api/productos/:id`: Elimina un producto por su ID.
 
-PUT /api/productos/:id: Actualiza un producto por su ID.
-
-DELETE /api/productos/:id: Elimina un producto por su ID.
-
-🤝 Contribuciones
+## 🤝 Contribuciones
 Siéntete libre de abrir issues o enviar pull requests. Todas las contribuciones son bienvenidas.
 
-📄 Licencia
+## 📄 Licencia
 Este proyecto está bajo la Licencia ISC.

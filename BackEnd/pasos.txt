@@ -9,9 +9,11 @@ npm init -y
 
 Estas son las librerías principales que tu aplicación necesita para funcionar en un servidor.
 
-npm install express typeorm pg bcryptjs jsonwebtoken
+npm install express typeorm pg bcryptjs jsonwebtoken cors
 
 3. Instalar Dependencias de Desarrollo
+
+npm install typescript ts-node tsx @types/express @types/node @types/bcryptjs @types/jsonwebtoken @types/cors --save-dev 
 
 Estas librerías son para ayudarte a desarrollar con TypeScript. No son necesarias en un entorno de producción, por lo que las instalamos con el flag --save-dev.
 
