@@ -1,8 +1,8 @@
 1. Inicializar un Proyecto de Node.js
 
 Primero, crea una carpeta para tu proyecto y navega hasta ella en la terminal. Luego, inicializa el proyecto de Node.js con npm init. El flag -y acepta todas las opciones predeterminadas.
-mkdir mi-proyecto-backendcd mi-proyecto-backend
-
+mkdir mi-proyecto-backend
+cd mi-proyecto-backend
 npm init -y
 
 2. Instalar Dependencias de Producción
@@ -14,3 +14,67 @@ npm install express typeorm pg bcryptjs jsonwebtoken
 3. Instalar Dependencias de Desarrollo
 
 Estas librerías son para ayudarte a desarrollar con TypeScript. No son necesarias en un entorno de producción, por lo que las instalamos con el flag --save-dev.
+
+4. El package.json debe tener la estructura:
+
+{
+  "name": "sistema---zegel",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "dev": "tsx src/server.ts",
+    "start": "node dist/server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "pg": "^8.16.3",
+    "typeorm": "^0.3.27"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
+    "@types/express": "^5.0.3",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/node": "^24.5.2",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.20.5",
+    "typescript": "^5.9.2"
+  }
+}
+
+5. El archivo tsconfig.json debe tener la estructura:
+
+{
+  "compilerOptions": {
+    "module": "nodenext",
+    "target": "esnext",
+    "types": [],
+    "lib": [
+      "esnext"
+    ],
+    "outDir": "./dist",
+    "sourceMap": true,
+    "declaration": true,
+    "declarationMap": true,
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+    "strict": true,
+    "jsx": "react-jsx",
+    "verbatimModuleSyntax": true,
+    "isolatedModules": true,
+    "noUncheckedSideEffectImports": true,
+    "moduleDetection": "force",
+    "skipLibCheck": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "forceConsistentCasingInFileNames": true
+  }
+}
