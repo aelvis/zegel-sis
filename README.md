@@ -69,9 +69,6 @@ Sigue estos pasos para configurar el proyecto en tu entorno local.
     a. Conéctate a tu instancia de PostgreSQL y ejecuta el siguiente script para crear las tablas e insertar datos de ejemplo.
 
     ```sql
-    -- ... (el script SQL se mantiene igual) ...
-
-    ```sql
     CREATE TABLE usuarios (
         id SERIAL PRIMARY KEY,
         email VARCHAR(255) UNIQUE NOT NULL,
