@@ -1,0 +1,16 @@
+1. Inicializar un Proyecto de Node.js
+
+Primero, crea una carpeta para tu proyecto y navega hasta ella en la terminal. Luego, inicializa el proyecto de Node.js con npm init. El flag -y acepta todas las opciones predeterminadas.
+mkdir mi-proyecto-backendcd mi-proyecto-backend
+
+npm init -y
+
+2. Instalar Dependencias de Producción
+
+Estas son las librerías principales que tu aplicación necesita para funcionar en un servidor.
+
+npm install express typeorm pg bcryptjs jsonwebtoken
+
+3. Instalar Dependencias de Desarrollo
+
+Estas librerías son para ayudarte a desarrollar con TypeScript. No son necesarias en un entorno de producción, por lo que las instalamos con el flag --save-dev.
